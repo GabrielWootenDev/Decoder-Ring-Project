@@ -26,8 +26,8 @@ const polybiusModule = (function () {
   function polybius(input, encode = true) {
     /* determines which table our code will read  to encode or decode based on the encode variable*/
     const direction = encode ? encoding : decoding;
-    /* on the next line if our decoding input, without spaces included, is uneven (divisible by 2) then it returns false */
-    if (direction === decoding && input.replace(/\s+/g, '').length % 2) return false;
+    /* on the next line if our decoding input, without spaces included, is uneven (not divisible by 2) then it returns false */
+    if (direction === decoding && input.replace(/\s/g, '').length % 2) return false;
     /* our return code matches either 2 numbers or a letter in the lowercased string provided in the input through the map method and returns the corresponding value from the appropriate object or a space (\s) and then joins the resulting array into our new message*/
     return input.toLowerCase().match(/[0-9]{2}|[a-z]|\s/g).map(character => direction[character] || character).join('');
   }
@@ -36,5 +36,7 @@ const polybiusModule = (function () {
     polybius,
   };
 })();
+
+
 
 module.exports = { polybius: polybiusModule.polybius };
