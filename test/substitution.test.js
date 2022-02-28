@@ -2,10 +2,17 @@ const expect = require("chai").expect;
 const  { substitution } = require("../src/substitution");
 
 describe ("susbstitution", () => {
+    it("should return false if no substitution alphabet has been input", () => {
+        const input = "Hello world";
+        const alphabet = "";
+        const actual = substitution(input);
+        expect(actual).to.be.false;
+    })
+
     it("should return a coded message with spaces maintained and capital letters ignored and should still be a string", () => {
         const input = "Hello world";
         const alphabet = "poiuytrewqlkjhgfdsamnbvcx";
-        const actual = substitution(input);
+        const actual = substitution(input, alphabet);
         const expected = "eykkg vgsku";
         expect(actual).to.equal(expected);
         expect(actual).to.be.a.string;

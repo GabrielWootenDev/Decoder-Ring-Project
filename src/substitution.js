@@ -6,10 +6,11 @@
 const substitutionModule = (function () {
   // you can add any code you want within this function scope
 
-  function substitution(input, alphabet, encode = true) {
+  function substitution(input, alphabet = "null", encode = true) {
     const trueAlphabet = "abcdefghijklmnopqrstuvwxyz";
     const newAlphabet = alphabet;
-    if (newAlphabet.split("").some(function(value,index, array){return array.lastIndexOf(value) != index }) || newAlphabet.length != 26) return false; /*if there are any duplicates or the replacement alphabet is not exactly 26 characters long then we return false */
+    const newAlphabetArray = alphabet.split("");
+    if (newAlphabetArray.some(function(value,index, array){return array.lastIndexOf(value) != index }) || newAlphabet.length != 26) return false; /*if there are any duplicates or the replacement alphabet is not exactly 26 characters long then we return false */
     const messageArray = input.toLowerCase().split(""); /* making each letter of the input its own array entry for easier manipulation */
     const message = messageArray.join(""); /* making the new array into a string for the comparison in the map function below, enables ignoring the capital letters in the input */
     if (encode) { /* runs the first part of the code only when encoding a message */
