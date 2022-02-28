@@ -11,7 +11,7 @@ describe ("susbstitution", () => {
 
     it("should return a coded message with spaces maintained and capital letters ignored and should still be a string", () => {
         const input = "Hello world";
-        const alphabet = "poiuytrewqlkjhgfdsamnbvcx";
+        const alphabet = "poiuytrewqlkjhgfdsamnbvcxz";
         const actual = substitution(input, alphabet);
         const expected = "eykkg vgsku";
         expect(actual).to.equal(expected);
@@ -44,7 +44,7 @@ describe ("susbstitution", () => {
     it("should return false if the alphabet parameter contains duplicate characters", () => {
         const input = "hello world";
         const alphabet = "poiuytrewqlkjhggfdsamnbvxx";
-        const actual = substitution(input, false);
+        const actual = substitution(input, alphabet, false);
         expect(actual).to.be.false;
     });
 })
